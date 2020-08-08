@@ -6,8 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "publish": "surge public https://chronobiology.surge.sh",
-    "cbp": "npm-run-all -s clean build publish",
+    "cb": "npm-run-all -s clean build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",

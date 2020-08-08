@@ -6,8 +6,8 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Chronobiology`,
-    description: `Exploring biophysical ordinary differential equations in javascript`,
+    title: `Bioscillators`,
+    description: `Exploring biophysical dynamical systems in javascript`,
     author: `@norregaarden`,
     links: [
       ['/goodwin', 'Goodwin'],
@@ -67,7 +67,7 @@ module.exports = {
         // Setting a color is optional.
         color: `tomato`,
         // Disable the loading spinner.
-        showSpinner: false,
+        showSpinner: true,
       },
     },
   ],
