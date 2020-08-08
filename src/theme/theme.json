@@ -1,0 +1,66 @@
+{
+	"palette": {
+		"common": {
+			"black": "#000",
+			"white": "#fff"
+		},
+		"background": {
+			"paper": "#fff",
+			"default": "#fafafa"
+		},
+		"primary": {
+			"light": "#7986cb",
+			"main": "rgba(106, 27, 154, 1)",
+			"dark": "#303f9f",
+			"contrastText": "#fff"
+		},
+		"secondary": {
+			"light": "#ff4081",
+			"main": "rgba(255, 138, 101, 1)",
+			"dark": "#c51162",
+			"contrastText": "rgba(0, 0, 0, 1)"
+		},
+		"error": {
+			"light": "#e57373",
+			"main": "rgba(208, 2, 27, 1)",
+			"dark": "#d32f2f",
+			"contrastText": "#fff"
+		},
+		"text": {
+			"primary": "rgba(0, 0, 0, 0.87)",
+			"secondary": "rgba(0, 0, 0, 0.54)",
+			"disabled": "rgba(0, 0, 0, 0.38)",
+			"hint": "rgba(0, 0, 0, 0.38)"
+		},
+		"nodes": {
+			"red": "#F94144",
+			"orangeDark": "#F3722C",
+			"orangeLight": "#F8961E",
+			"yellow": "#F9C74F",
+			"green": "#90BE6D",
+			"cyan": "#43AA8B",
+			"blue": "#577590"
+		}
+	},
+	"typography": {
+		"fontSize": 16,
+		"h1": {
+			"fontSize": "4rem"
+		},
+		"h2": {
+			"fontSize": "3rem"
+		},
+		"h3": {
+			"fontSize": "2rem"
+		},
+		"h4": {
+			"fontSize": "1.75rem"
+		},
+		"h5": {
+			"fontSize": "1.5rem"
+		},
+		"h6": {
+			"fontSize": "1.25rem"
+		}
+	}
+}

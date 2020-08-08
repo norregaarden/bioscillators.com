@@ -1,0 +1,81 @@
+import React from 'react'
+import Layout from 'src/components/layout'
+import Simulator from 'src/components/simulator'
+
+export default () => {
+	const timing = {
+		dt: 0.00001,
+		tmax: 100,
+		sample: 1
+	}
+	const scope = {
+		k1: 0.01,
+		k3: 1,
+		k5: 0.01,
+		k2: 0.1,
+		k4: 0.1,
+		k6: 0.1,
+		ka: 100000,
+		k_a: 100000,
+		kd: 1000,
+		k_d: 1000,
+		kc: 1000,
+		k_c: 1000
+	}
+	const vars = [
+		{
+			l: 'X',
+			c: 'red',
+			i: 1,
+			d: ' k1*SO - k2*X '
+		},
+		{
+			l: 'Y',
+			c: 'orange',
+			i: 1,
+			d: ' k3*X - k4*Y '
+		}, 
+		{
+			l: 'E',
+			c: 'green',
+			i: 0.005,
+			d: ' k5*Y - k6*E - ka*SO*E + kd*ESO + kc*ESO '
+		},
+		{
+			l: 'SO',
+			c: 'black',
+			i: 0.5,
+			d: ' -ka*SO*E + kd*ESO + k_c*PS1 + k6*ESO'
+		},
+		{
+			l: 'S1',
+			c: 'gray',
+			i: 1,
+			d: ' -k_a*S1*P + k_d*PS1 + kc*ESO '
+		},
+		{
+			l: 'ESO',
+			c: 'darkolivegreen',
+			i: 0.005,
+			d: ' ka*SO*E - kd*ESO - kc*ESO - k6*ESO'
+		},
+		{
+			l: 'PS1',
+			c: 'khaki',
+			i: 0.01,
+			d: ' k_a*S1*P - k_d*PS1 - k_c*PS1 '
+		},
+		{
+			l: 'P',
+			c: 'yellow',
+			i: 0.01,
+			d: ' -(k_a*S1*P - k_d*PS1 - k_c*PS1) '
+		}
+	]
+
+	return(
+		<Layout title="Ultrasensitivity">
+			<Simulator timing={timing} scope={scope} vars={vars} />
+		</Layout>
+	)
+}
