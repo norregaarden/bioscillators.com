@@ -28,7 +28,7 @@ export default ({data}) => {
 	// const width = parseInt(/max-width: (.*?)px/g.exec(data.file.childImageSharp.fluid.sizes)[1])
 
 	return (
-			<Layout title="Biophysical Models of Circadian Rhytms"><Box className={classes.indexLayout}>
+			<Layout title="Biological Oscillators"><Box className={classes.indexLayout}>
 				<Typography variant="h4">Three basic biological networks are implemented:</Typography>
 
 				<List>
