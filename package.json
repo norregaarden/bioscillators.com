@@ -1,7 +1,7 @@
 {
-  "name": "norregaarden_chronobiology",
+  "name": "bioscillators",
   "private": true,
-  "description": "Exploring biophysical ordinary differential equations in javascript",
+  "description": "Exploring biophysical dynamical systems in javascript",
   "version": "0.2.0",
   "license": "MIT",
   "scripts": {
