@@ -13,6 +13,7 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Tab from '@material-ui/core/Tab'
 import Tabs from '@material-ui/core/Tabs'
+import Hidden from '@material-ui/core/Hidden'
 
 import { create, all } from 'mathjs'
 import RungeKutta4 from 'runge-kutta-4'
@@ -535,10 +536,14 @@ export default function Simulator(props) {
 
 	<Grid container>
 		<Grid item xs={12}> {/* xl={6} */}
-			{(typeof window !== 'undefined') && <Network network={network} scope={scope}
+			{/* {(typeof window !== 'undefined') && <Network network={network} scope={scope}
 				networkEditHandler={(edit) => networkDispatchHandler(edit)} 
 				errorHandler={(e) => setError(e)}>
-			</Network>}
+			</Network>} */}
+			<Network network={network} scope={scope}
+				networkEditHandler={(edit) => networkDispatchHandler(edit)} 
+				errorHandler={(e) => setError(e)}>
+			</Network>
 		</Grid>
 
 		<Grid item xs={12}> {/* xl={6} */}
@@ -576,8 +581,8 @@ export default function Simulator(props) {
 				*/}
 				<Box className={classes.texForm}>
 					{network.nodes.filter(n => !n.deleted).map( (v,i) => {
-						if (typeof window === 'undefined')
-							return ''
+						// if (typeof window === 'undefined')
+						// 	return ''
 						let tdot = '\\dot{' + v.label + '} = '
 						let mparse
 						try {
@@ -762,7 +767,8 @@ export default function Simulator(props) {
 			</div>
 		</Grid>
 	</Grid>
-			{(typeof window !== 'undefined') && <Plot series={seriesData} vars={network.nodes.filter(n => !n.deleted)} timing={timing} errorHandler={(e) => setError(e)}></Plot>}
+
+	{(typeof window !== 'undefined') && <Plot series={seriesData} vars={network.nodes.filter(n => !n.deleted)} timing={timing} errorHandler={(e) => setError(e)}></Plot>}
 
 			<Box style={{marginLeft: '64px', fontSize: '1.5em'}}>
 				<FormHelperText>Edit initial values by clicking the nodes in the network</FormHelperText>

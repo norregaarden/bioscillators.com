@@ -209,7 +209,8 @@ const cytoscapeStyles = [
 			'shape': 'ellipse',
 			'overlay-opacity': 0,
 			'border-width': 4, // makes the handle easier to hit
-			'border-opacity': 0
+			'border-opacity': 0,
+			// 'display': 'none',
 		}
 	},
 	{
@@ -218,6 +219,7 @@ const cytoscapeStyles = [
 			'background-color': col_secondary,
 			'width': 1,
 			'height': 1,
+			// 'display': 'none',
 		}
 	},
 	{
@@ -251,6 +253,13 @@ const cytoscapeStyles = [
 	}
 ]
 
+function removeLastIfCharLast (strng, chr){
+    if (strng.substring(strng.length - 1) === chr)
+        strng = strng.substring(0, strng.length-1);
+
+    return strng
+}
+
 export default ({network, scope, networkEditHandler, errorHandler}) => {
 	// console.log("NETWORK RENDER")
 	const [rendered, setRendered] = useState(false)
@@ -276,6 +285,8 @@ export default ({network, scope, networkEditHandler, errorHandler}) => {
 	const [popperEdgeId, setPopperEdgeId] = useState(0)
 	const [popperEdgeData, setPopperEdgeData] = useState(null)
 	const [popperEdgeType, setPopperEdgeType] = useState(null)
+	// const [popperEdgeSmall, setPopperEdgeSmall] = useState(false)
+	const popperEdgeSmall = false
 
 	const [popperNodeOpen, setPopperNodeOpen] = useState(false)
 	const [anchorElNode, setAnchorElNode] = useState(null)
@@ -342,11 +353,14 @@ export default ({network, scope, networkEditHandler, errorHandler}) => {
 		console.log(pReaction)
 		pReaction = pReaction.replace(sbts.source + ' - ' + sbts.source, '')
 		pReaction = pReaction.replace(' + ' + sbts.target + ' - ' + sbts.target, '')
+		pReaction = pReaction.replace(sbts.target + ' + ' + sbts.target + ' + ' + sbts.target, '3' + sbts.target)
 		pReaction = pReaction.replace(sbts.target + ' + ' + sbts.target, '2' + sbts.target)
 		pReaction = pReaction.replace(sbts.source + ' + ' + sbts.source, '2' + sbts.source)
 		if (pReaction.indexOf(sbts.source) === 0 && pReaction.indexOf(' - ' + sbts.source) !== -1)
 			pReaction = pReaction.replace(' - ' + sbts.source, '').replace(sbts.source + ' + ', '')
 		console.log(pReaction)
+		pReaction = removeLastIfCharLast(pReaction, ' ')
+		pReaction = removeLastIfCharLast(pReaction, '+')
 		// reaction: \\ce{ et.preReaction + tp.reaction + et.preReaction + sign + tp.postReaction + (conserved? tp.postReactionConserved : '') }
 		let primaryReaction = '\\ce{' + et.preReaction(sbts) + tp.reaction(sbts) + pReaction  + '}'
 		console.log()
@@ -514,6 +528,7 @@ export default ({network, scope, networkEditHandler, errorHandler}) => {
 				transition
 			>{({ TransitionProps }) => (<Fade {...TransitionProps} timeout={210}><div>
 
+				{/* <span className="arrow" ref={setPopperArrowEdge} onClick={() => {setPopperEdgeSmall(!popperEdgeSmall)}}></span> */}
 				<span className="arrow" ref={setPopperArrowEdge}></span>
 
 				{anchorElEdge && <Card className={classes.popperCard} variant="outlined">
@@ -535,7 +550,7 @@ export default ({network, scope, networkEditHandler, errorHandler}) => {
 							className={classes.katexBox}></Box>}
 					</Grid>
 
-					<Grid item> {/* dropdowns */}
+					{(!popperEdgeSmall) && <Grid item> {/* dropdowns */}
 						<FormControl className={classes.formControl} color="secondary">
 							<InputLabel htmlFor="popper_type">Type</InputLabel>
 							{popperEdgeData && <Select native
@@ -582,9 +597,9 @@ export default ({network, scope, networkEditHandler, errorHandler}) => {
 								})}
 							</Select>}
 						</FormControl>
-					</Grid>
+					</Grid>}
 
-					{popperEdgeData && popperEdgeType && popperEdgeData.parameters && popperEdgeType.parameters && <Grid item>
+					{(!popperEdgeSmall) && popperEdgeData && popperEdgeType && popperEdgeData.parameters && popperEdgeType.parameters && <Grid item>
 						{popperEdgeData.parameters.map((p,i) => <FormControl key={i} className={classes.formControl} 
 							style={{ marginTop: '-8px' }} color="secondary">
 							<InputLabel htmlFor={"popper_param_"+i}>{popperEdgeType.parameters[i].label}</InputLabel>
@@ -612,7 +627,7 @@ export default ({network, scope, networkEditHandler, errorHandler}) => {
 						</FormControl>)}						
 					</Grid>}
 
-					<Grid item> {/* switches */}
+					{(!popperEdgeSmall) && <Grid item> {/* switches */}
 						{popperEdgeData && <FormControlLabel className={classes.formControlLabel} 
 							label="Conserved" disabled={(popperEdgeData.source === popperEdgeData.target)}
 							control={
@@ -649,8 +664,9 @@ export default ({network, scope, networkEditHandler, errorHandler}) => {
 							/>}
 							style={{ width: '15ch' }}
 						/>}
-					</Grid>
-					<Grid item>
+					</Grid>}
+					
+					{(!popperEdgeSmall) && <Grid item> {/* delete */}
 						{popperEdgeData && <Button variant="outlined"
 							color="secondary" className={classes.deleteButton}
 							onClick={() => {
@@ -661,7 +677,7 @@ export default ({network, scope, networkEditHandler, errorHandler}) => {
 								setPopperEdgeOpen(false)
 							}}>Delete
 						</Button>}
-					</Grid>
+					</Grid>}
 				</Grid>
 				</Card>}
 			</div></Fade>)}</Popper>

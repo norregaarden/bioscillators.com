@@ -23,7 +23,10 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export default (props) => {
+export default ({children, location, pageContext, ...props}) => {
+	// if (String(location.pathname).includes('offline-plugin-app-shell-fallback')) 
+	// 	return null
+
 	const classes = useStyles()
 
 	return (
@@ -39,7 +42,7 @@ export default (props) => {
 						</Box>
 						<Paper elevation={0}>
 							<Box p={3}>
-								{props.children}
+								{children}
 							</Box>
 						</Paper>
 					</Box>

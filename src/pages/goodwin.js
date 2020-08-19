@@ -6,7 +6,7 @@ import Simulator from 'src/components/simulator'
 // import useComlink from 'react-use-comlink'
 // import { WorkerClass } from 'src/utils/sim-worker'
 
-export default () => {
+export default ({location}) => {
 	const timing = {
 		dt: 0.01,
 		tmax: 100
@@ -56,7 +56,7 @@ export default () => {
 			}, 
 			{
 				id: 2,
-				label: 'nTF',
+				label: 'NTF',
 				color: theme.palette.nodes.cyan,
 				initial: 1,
 				dot: '',
@@ -140,7 +140,7 @@ export default () => {
 	// }, [count])
 
 	return(
-		<Layout title="Goodwin">
+		<Layout title="Goodwin" location={location}>
 			{/* <Box>
 				<Typography variant="h3">
 					Count: {count}

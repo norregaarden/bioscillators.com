@@ -21,14 +21,14 @@ const indexStyles = makeStyles((theme) => ({
 }))
 
 // data means query (?)
-export default ({data}) => {
+export default ({data, location}) => {
 	const classes = indexStyles()
 
 	// TO DO: width shouldn't be like this for every image
 	// const width = parseInt(/max-width: (.*?)px/g.exec(data.file.childImageSharp.fluid.sizes)[1])
 
 	return (
-			<Layout title="Biological Oscillators"><Box className={classes.indexLayout}>
+			<Layout title="Biological Oscillators" location={location}><Box className={classes.indexLayout}>
 				<Typography variant="h4">Three basic biological networks are implemented:</Typography>
 
 				<List>
@@ -60,12 +60,7 @@ export default ({data}) => {
 						<ul>
 							{/* <li><strike>Click on a node to change its properties including initial condition</strike></li>
 							<li><strike>Right-click to create a new node</strike></li> */}
-							<li><strike>Node-colors in differential equations</strike></li>
-							<li><strike>Highlight editing edge in differential equations</strike></li>
 							<li><strike>Phase plots for both variables and parameters</strike></li>
-						</ul>
-						<p>(<strike>To do but harder:</strike>)</p>
-						<ul>
 							<li><strike>Considerably more dynamic plots</strike></li>
 							<li><strike>Entrainment to time-dependent functions (light, temperature)</strike></li>
 							<li><strike>Search for limit cycles, analytically and computationally</strike></li>

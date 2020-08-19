@@ -35,13 +35,19 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-exclude',
+      options: { paths: ['/legacy/**'] }, // , '!/app/demo/*'   // all paths prefixed by /app/ will be excluded, except for app/demo/
+      // '/offline-plugin-app-shell-fallback/**', '!/offline-plugin-app-shell-fallback/index.html'
+      // , 
+    },
+    {
       resolve: `gatsby-theme-material-ui`,
-      options: {
-        stylesConfig: {
-          disableAutoprefixing: true,
-          // disableMinification: true
-        },
-      },
+      // options: {
+      //   stylesConfig: {
+      //     disableAutoprefixing: true,
+      //     disableMinification: false
+      //   },
+      // },
     },
     'gatsby-plugin-root-import',
     `gatsby-transformer-sharp`,
@@ -49,8 +55,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Chronobiology`,
-        short_name: `chrono`,
+        name: `Bioscillators`,
+        short_name: `bioscillators`,
         start_url: `/`,
         background_color: `#000`,
         theme_color: `#fff`,
@@ -61,15 +67,7 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
-    {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        // Setting a color is optional.
-        color: `tomato`,
-        // Disable the loading spinner.
-        showSpinner: true,
-      },
-    },
-    'gatsby-plugin-htaccess'
+    'gatsby-plugin-sitemap',
+    'gatsby-plugin-htaccess',
   ],
 }

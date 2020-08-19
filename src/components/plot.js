@@ -36,8 +36,8 @@ export default ({vars, series, timing, errorHandler}) => {
 			toImageButtonOptions: {
 				format: 'png',
 				filename: 'bioscillators',
-				height: 600,
-				width: 800,
+				height: 300,
+				width: 900,
 				scale: 1.23
 			  }
 		}

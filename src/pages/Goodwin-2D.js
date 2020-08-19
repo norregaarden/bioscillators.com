@@ -3,7 +3,7 @@ import theme from 'src/theme/theme'
 import Layout from 'src/components/layout'
 import Simulator from 'src/components/simulator'
 
-export default () => {
+export default ({location}) => {
 	const timing = {
 		dt: 0.001,
 		tmax: 100
@@ -74,7 +74,7 @@ export default () => {
 		]
 	}
 	return(
-		<Layout title="Lotka-Volterra">
+		<Layout title="Lotka-Volterra" location={location}>
 			{false && <Simulator timing={timing} scope={scope} network={network} />}
 		</Layout>
 	)
