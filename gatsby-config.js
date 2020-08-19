@@ -9,11 +9,14 @@ module.exports = {
     title: `Bioscillators`,
     description: `Exploring biophysical dynamical systems in javascript`,
     author: `@norregaarden`,
+    siteUrl: `https://bioscillators.com`,
+    url: `https://bioscillators.com`,
     links: [
-      ['/goodwin', 'Goodwin'],
+      ['/goodwin', 'Goodwin Model'],
       // ['/ultrasensitivity', 'Ultrasensitivity'],
       ['/lotka-volterra', 'Lotka-Volterra'],
-      ['/SIR', 'SIR']
+      ['/harmonic-oscillator', 'Harmonic Oscillator'],
+      ['/SIR', 'Epidemiology: SIR']
       // ['/legacy/goodwin_legacy', 'Legacy | Goodwin'],
       // ['/legacy/ultrasensitivity_legacy', 'Legacy | Ultrasensitivity']
     ]
