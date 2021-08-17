@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{cTg6:function(a,t,e){"use strict";e.r(t);var n=e("q1tI"),o=e.n(n),r=e("WlUB"),c=e("Bl7J");e("3XJa");t.default=function(a){var t=a.location;r.a.palette.nodes.cyan,r.a.palette.nodes.orangeDark;return o.a.createElement(c.a,{title:"Lotka-Volterra",location:t},!1)}}}]);
+//# sourceMappingURL=component---src-pages-goodwin-2-d-2-js-cd5b92c069295a58d355.js.map
